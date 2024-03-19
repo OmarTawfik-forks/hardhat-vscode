@@ -14,6 +14,7 @@ import { onTypeDefinition } from "@services/typeDefinition/onTypeDefinition";
 import { onReferences } from "@services/references/onReferences";
 import { onImplementation } from "@services/implementation/onImplementation";
 import { onRename } from "@services/rename/onRename";
+import { lintOnTextChange } from "@services/lintOnTextChange";
 import { ServerState } from "./types";
 import { Telemetry } from "./telemetry/types";
 import { attachDocumentHooks } from "./services/documents/attachDocumentHooks";
@@ -90,6 +91,7 @@ function attachLanguageServerLifeCycleHooks(
 function attachLanguageServerCommandHooks(serverState: ServerState) {
   const { connection } = serverState;
 
+  connection.onDidChangeTextDocument(lintOnTextChange(serverState));
   connection.onSignatureHelp(onSignatureHelp(serverState));
   connection.onCompletion(onCompletion(serverState));
   connection.onDefinition(onDefinition(serverState));
