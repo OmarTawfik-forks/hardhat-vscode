@@ -9,6 +9,7 @@ import { setupLanguageServerHooks } from "./setup/setupLanguageServerHooks";
 import { setupTaskProvider } from "./setup/setupTaskProvider";
 import { setupWorkspaceHooks } from "./setup/setupWorkspaceHooks";
 import { ExtensionState } from "./types";
+import { setupDebugger } from "./setupDebugger";
 
 let extensionState: ExtensionState | null = null;
 
@@ -41,6 +42,8 @@ export async function activate(context: ExtensionContext) {
 
   // eslint-disable-next-line @typescript-eslint/no-floating-promises
   warnOnOtherSolidityExtensions(extensionState);
+
+  await setupDebugger(context);
 
   return {
     isReady: () => !!extensionState?.client?.initializeResult,

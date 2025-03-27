@@ -39,6 +39,8 @@
   },
   "activationEvents": [
     "onLanguage:solidity",
+    "onDebugResolve:solidity",
+    "onDebugDynamicConfigurations:solidity",
     "workspaceContains:**/hardhat.config.{ts,js}",
     "workspaceContains:**/foundry.toml",
     "workspaceContains:**/truffle-config.js",
@@ -172,6 +174,15 @@
         "command": "solidity.hardhat.flattenCurrentFile",
         "title": "Hardhat: Flatten this file and its dependencies",
         "enablement": "editorLangId == 'solidity' && solidity.inHardhatProject"
+      }
+    ],
+    "debuggers": [
+      {
+        "type": "solidity",
+        "label": "solidity",
+        "languages": [
+          "solidity"
+        ]
       }
     ],
     "menus": {

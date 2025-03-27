@@ -1,0 +1,26 @@
+{
+  "name": "@nomicfoundation/mycli",
+  "private": true,
+  "main": "./out/index.js",
+  "types": "./out/index.d.ts",
+  "files": [
+    "out/"
+  ],
+  "bin": {
+    "nomicfoundation-mycli": "./out/index.js"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "scripts": {
+    "build": "tsc -b tsconfig.build.json",
+    "clean": "rimraf out .nyc_output coverage *.tsbuildinfo"
+  },
+  "devDependencies": {
+    "@types/node": "^16.18.12"
+  },
+  "dependencies": {
+    "@nomicfoundation/slang": "0.16.0",
+    "@vscode/debugadapter": "1.68.0"
+  }
+}

@@ -4,6 +4,7 @@
   "workspaces": [
     "client",
     "server",
+    "mycli",
     "coc",
     "test/e2e",
     "test/protocol"
@@ -17,8 +18,8 @@
     "url": "https://github.com/NomicFoundation/hardhat-vscode/issues"
   },
   "scripts": {
-    "build": "tsc -b ./client/tsconfig.json && tsc -b ./server/tsconfig.build.json && tsc -b ./coc/tsconfig.json && tsc -b",
-    "watch": "concurrently -n client,server \"tsc -b -w ./client/tsconfig.json\" \"tsc -b -w ./server/tsconfig.build.json\"",
+    "build": "tsc -b ./client/tsconfig.json && tsc -b ./server/tsconfig.build.json && tsc -b ./mycli/tsconfig.build.json && tsc -b ./coc/tsconfig.json && tsc -b",
+    "watch": "concurrently -n client,server \"tsc -b -w ./client/tsconfig.json\" \"tsc -b -w ./server/tsconfig.build.json\" \"tsc -b -w ./mycli/tsconfig.build.json\"",
     "test:unit": "npm -w server run test",
     "test:protocol": "npm -w test/protocol run test",
     "test:e2e": "npm run build && node ./out/test/runTests.js",
@@ -29,7 +30,7 @@
     "lint:fix": "npm run prettier -- --write && npm run eslint -- --fix && npm run -w client lint:fix && npm run -w server lint:fix && npm run -w coc lint:fix && npm run -w test/protocol lint:fix",
     "prettier": "prettier *.md *.json \"{docs,syntaxes,.github,.vscode}/**/*.{md,yml,json}\"",
     "eslint": "eslint ./test/**/*.ts",
-    "clean": "rimraf ./dist ./out && npm -w client run clean && npm -w server run clean",
+    "clean": "rimraf ./dist ./out && npm -w client run clean && npm -w server run clean && npm -w mycli run clean",
     "generate-readmes": "ts-node scripts/interpolateReadmes.ts",
     "prepackage": "npm run generate-readmes",
     "package": "npm -w client run package",

@@ -13,6 +13,7 @@
   "include": [
     "./client",
     "./server",
+    "./mycli",
     "./coc",
     "./test",
     "./test/**/*.json",
@@ -24,6 +25,7 @@
     "./server/test",
     "./client/out",
     "./server/out",
+    "./mycli/out",
     "./coc/out",
     "./test/protocol",
     "./out",
@@ -35,6 +37,9 @@
     },
     {
       "path": "./server"
+    },
+    {
+      "path": "./mycli"
     },
     {
       "path": "./coc"
